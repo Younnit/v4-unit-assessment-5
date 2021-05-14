@@ -38,7 +38,15 @@ module.exports = {
       }
     },
     createPost: (req, res) => {
-      //code here
+      const db = req.app.get('db')
+      const {id} = req.session.user
+      const {title, img, content} = req.body
+      let date = new Date
+      if(!id){
+        return res.status(403).send('User not signed in.')
+      }
+      const newPost = db.post.create_post([id, title, img, content, date])
+      res.status(200).send(newPost)
     },
     readPost: (req, res) => {
       req.app.get('db').post.read_post(req.params.id)
