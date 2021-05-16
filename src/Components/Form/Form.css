@@ -43,3 +43,10 @@
     font-family: 'Open Sans','Courier New', Courier, monospace;
     font-size: 12px;
   }
+
+@media (max-width: 770px){
+  .form{
+    margin: 0px;
+    width: 100%;
+  }
+}
